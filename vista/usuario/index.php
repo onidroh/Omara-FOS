@@ -14,7 +14,7 @@
                     <tr>
                     <th scope="col">RUT</th>
                     <th scope="col">Nombre</th>
-                    <th scope="col">Apellido</th>
+                    <th scope="col">Fecha Nacimientos</th>
                     <th scope="col">Correo</th>
                     <th scope="col">Opciones</th>
                     </tr>
@@ -23,8 +23,8 @@
                     <?php foreach($this->model->Listar() as $usr): ?>
                     <tr>
                         <th scope="row"><?= $usr->rut; ?></th>
-                        <td><?= $usr->nombre; ?></td>
-                        <td><?= $usr->apellido; ?></td>
+                        <td><?= $usr->nombre; ?> <?= $usr->apellido; ?></td>
+                        <td><?= $usr->fecha_nac; ?></td>
                         <td><?= $usr->correo; ?></td>
                         <td>
                             <div class="btn-group" role="group">

@@ -1,5 +1,6 @@
 <?php
 require_once 'model/database.php';
+require_once 'model/config.php';
 
 $controller = 'Usuario';
 

@@ -33,11 +33,8 @@ class UsuarioController{
     }
     
     public function guardar(){
-
         //encripta la clave
-        $pass = $_REQUEST['password'];
-        $contraseña = password_hash($pass,PASSWORD_DEFAULT);
-        echo $contraseña;
+        $contraseña = sha1($_REQUEST['password']);
 
         $nuevo = new Usuario();
         
@@ -56,7 +53,7 @@ class UsuarioController{
 
     public function actualiza(){
         //encripta la clave
-        $contraseña = password_hash($_REQUEST['password'], PASSWORD_DEFAULT);
+        $contraseña = sha1($_REQUEST['password']);
         
         $usuario = new Usuario();
         
