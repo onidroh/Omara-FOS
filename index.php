@@ -1,6 +1,7 @@
 <?php
 require_once 'model/database.php';
 require_once 'model/config.php';
+session_start();
 
 $controller = 'Usuario';
 

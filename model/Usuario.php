@@ -25,7 +25,6 @@ class Usuario {
 	}
 
 	public function Listar() {
-		
 		try {
 			$result = array();
 
@@ -38,6 +37,7 @@ class Usuario {
 		{
 			die($e->getMessage());
 		}
+		
 	}
 
 	public function Obtener($id) {
@@ -68,7 +68,6 @@ class Usuario {
 				nombre = ?,
 				apellido = ?, 
 				rut = ?,
-				pass = ?,
                 fecha_nac = ?,
                 correo = ?,
 				fecha_edit = ?	
@@ -79,10 +78,26 @@ class Usuario {
 				    $data->nombre, 
                     $data->apellido,                        
 					$data->rut,
-					$data->pass,
                     $data->fecha_nac,
                     $data->correo, 
 					$data->fecha_edit,
+					$data->id
+				)
+			);
+		} catch (Exception $e) {
+			die($e->getMessage());
+		}
+	}
+
+	public function cambioPass($data) {
+		try {
+			$sql = "UPDATE usuario SET 
+				pass = ?	
+				WHERE id = ?";
+
+			$this->db->prepare($sql)->execute(
+				array(
+					$data->password,
 					$data->id
 				)
 			);

@@ -14,7 +14,7 @@
 <body>
 <div class="container espacio">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded-lg">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="<?= URL ?>">
             <img src="<?php echo URL ?>assets/img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
             Mantenedor de Usuarios
         </a>
@@ -30,7 +30,14 @@
                     <a class="nav-link" href="<?= URL ?>?c=login&a=detalle">Leeme</a>
                 </li>
                 <li class="nav-item">
+                    <?php if ($session_uid) : ?>
+                    <a class="nav-link active" href="<?= URL ?>?c=usuario&a=ver&id=<?= $session_uid; ?>"><?php echo $session_nombre ?></a>
+                    <?php else: ?>
                     <a class="nav-link" href="<?= URL ?>?c=login">Login</a>
+                    <?php endif; ?>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= URL ?>?c=login&a=cerrar">Cerrar Sesión</a>
                 </li>
             </ul>
         </div>

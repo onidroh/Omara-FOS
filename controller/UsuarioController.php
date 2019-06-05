@@ -10,7 +10,7 @@ class UsuarioController{
     }
     
     public function index() {
-        require_once 'vista/header.php';
+         require_once 'vista/header.php';
         require_once 'vista/usuario/index.php';
        
     }
@@ -30,6 +30,17 @@ class UsuarioController{
  
         require_once 'vista/header.php';
         require_once 'vista/usuario/crear.php'; 
+    }
+
+    public function nueva() {
+        $usuario = new Usuario();
+        
+        if(isset($_REQUEST['id'])){
+            $usuarios = $this->model->Obtener($_REQUEST['id']);
+        }  
+ 
+        require_once 'vista/header.php';
+        require_once 'vista/usuario/editar-pass.php'; 
     }
     
     public function guardar(){
@@ -61,7 +72,6 @@ class UsuarioController{
         $usuario->nombre = $_REQUEST['nombre'];
         $usuario->apellido = $_REQUEST['apellido'];
         $usuario->rut = $_REQUEST['rut'];
-        $usuario->password = $contraseña;
         $usuario->fecha_nac = $_REQUEST['fecha'];  
         $usuario->correo = $_REQUEST['correo'];
         $usuario->fecha_edit = date("Y-m-d");
@@ -76,4 +86,28 @@ class UsuarioController{
         header('Location: index.php');
     }
 
+    public function ver(){
+        $usuario = new Usuario();
+        
+        if(isset($_REQUEST['id'])){
+            $usuarios = $this->model->Obtener($_REQUEST['id']);
+        }  
+
+        require_once 'vista/header.php';
+        require_once 'vista/usuario/ver.php';
+    }
+
+    public function cambioContraseña (){
+        //encripta la clave
+        $contraseña = sha1($_REQUEST['password']);
+        
+        $usuario = new Usuario();
+
+        $usuario->id = $_REQUEST['id'];
+        $usuario->password = $contraseña;
+
+        $this->model->cambioPass($usuario);
+        
+        header('Location: index.php');
+    }
 }

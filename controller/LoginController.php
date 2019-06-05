@@ -26,13 +26,18 @@ class LoginController{
         $pass = $_REQUEST['password'];
 
         $resultado = $this->login->VerificarLogin($rut, $pass);
-        
-        if ($resultado ) {
-            session_start();
-
-            $_SESSION['uid'] = "hola";
+        //echo $resultado;
+        if ($resultado != false) {
+            $_SESSION['login'] = $resultado['id'];
+            $_SESSION['nombre'] = $resultado['nombre'];
         }
-        //header('Location: detalle.php');
+        header('Location: index.php');
+    }
+
+    public function cerrar(){
+
+        unset($_SESSION['login']);
+        header('Location: index.php');
     }
     
 }

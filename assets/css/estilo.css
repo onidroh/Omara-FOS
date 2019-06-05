@@ -8,6 +8,9 @@ body{
 .espacio{
     margin-top: 1rem;
 }
+.espacio-abajo{
+    margin-bottom: 1rem;
+}
 .login {
     width: 100%;
     max-width: 330px;

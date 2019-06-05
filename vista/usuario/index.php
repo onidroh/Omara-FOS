@@ -9,12 +9,11 @@
             </div>
         </div>
 
-            <table class="table table-striped">
+            <table class="table table-striped table-hover">
                 <thead>
                     <tr>
                     <th scope="col">RUT</th>
                     <th scope="col">Nombre</th>
-                    <th scope="col">Fecha Nacimientos</th>
                     <th scope="col">Correo</th>
                     <th scope="col">Opciones</th>
                     </tr>
@@ -24,13 +23,11 @@
                     <tr>
                         <th scope="row"><?= $usr->rut; ?></th>
                         <td><?= $usr->nombre; ?> <?= $usr->apellido; ?></td>
-                        <td><?= $usr->fecha_nac; ?></td>
                         <td><?= $usr->correo; ?></td>
                         <td>
-                            <div class="btn-group" role="group">
-                                <a href="?c=usuario&a=editar&id=<?= $usr->id; ?>"><button type="button" class="btn btn-success">Editar</button></a>
-                                <a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="?c=usuario&a=eliminar&id=<?php echo $usr->id; ?>"><button type="button" class="btn btn-danger">Borrar</button></a>
-                            </div>
+                            <a href="?c=usuario&a=editar&id=<?= $usr->id; ?>"><button type="button" class="btn btn-success">Editar</button></a>
+                            <a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="?c=usuario&a=eliminar&id=<?php echo $usr->id; ?>"><button type="button" class="btn btn-danger">Borrar</button></a>
+                            <a href="?c=usuario&a=ver&id=<?= $usr->id; ?>"><button type="button" class="btn btn-primary">Ver</button></a>
                         </td>
                     </tr>
                     <?php endforeach; ?>
